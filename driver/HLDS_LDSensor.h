@@ -96,19 +96,18 @@ public:
 	void close() { m_shuttingDown = true; }
 
 private:
-	// Serial port name: /dev/ttyUSB0, COM1, etc.
-	std::string m_port; 
-	// Baudrate of the serial port
-	uint32_t m_baudRate;
-	// Shutting down flag
-	bool m_shuttingDown;
-	// Motor speed
-	uint16_t m_motorSpeed;
-	// Motor rotation speed in RPM
-	uint16_t m_rpms;
-	// asio::ioservice for the serial port access
 	boost::asio::io_service m_io;
-	// asio's serial port object
+	// @brief The serial port the driver is attached to
+	std::string m_port; 
+	// @brief The baud rate for the serial connection
+	uint32_t m_baudRate;
+	// @brief Flag for whether the driver is supposed to be shutting down or not
+	bool m_shuttingDown;
+	// @brief Actual serial port object for reading/writing to the LFCD Laser Scanner
 	boost::asio::serial_port m_serial;
+	// @brief current motor speed as reported by the LFCD.
+	uint16_t m_motorSpeed;
+	// @brief RPMS derived from the rpm bytes in an LFCD packet
+	uint16_t m_rpms;
 };
 }

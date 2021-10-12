@@ -48,23 +48,26 @@ const uint16_t BufferLength = 2520;
 
 LDSensor::LDSensor(const std::string& port, uint32_t baud_rate)
   : m_port(port), m_baudRate(baud_rate),
-    m_shuttingDown(false), 
-    m_motorSpeed(0), m_rpms(0),
-    m_io(), m_serial(m_io, m_port)
+    m_shuttingDown(false), m_serial(m_io, m_port),
+    m_motorSpeed(0), m_rpms(0)
 {
+std::cout << "ctor" << std::endl;
     m_serial.set_option(boost::asio::serial_port_base::baud_rate(m_baudRate));
+std::cout << "1" << std::endl;
     startMotor();
+std::cout << "2" << std::endl;
 }
 
 LDSensor::~LDSensor()
 {
     stopMotor();
-    m_serial.close();
 }
 
 void LDSensor::startMotor()
 {
-    boost::asio::write(m_serial, boost::asio::buffer("b", 1));
+std::cout << "startMotor()" << std::endl;
+boost::asio::write(m_serial, boost::asio::buffer("b", 1));
+std::cout << "done" << std::endl;
 }
 
 void LDSensor::stopMotor()
@@ -146,13 +149,13 @@ void LDSensor::poll(LaserScan& scan)
 }
 
 // g++ -I. -lboost_system -lpthread -o HLDS_LDS HLDS_LDS.cpp
-#if 0
+#if 1 
 int main(int argc, char **argv)
 {
     HLDS::LDSensor ldsensor("/dev/ttyUSB0", 230400);
     HLDS::LaserScan scan;
 
-    while (0)
+    while (1)
     {
         ldsensor.poll(scan);
         std::cout << "angle_min: " << scan.angle_min << std::endl;

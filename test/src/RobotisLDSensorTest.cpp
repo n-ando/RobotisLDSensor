@@ -25,35 +25,37 @@ static const char* robotisldsensor_spec[] =
     "language",          "C++",
     "lang_type",         "compile",
     // Configuration variables
-    "conf.default.port_name", "ttyUSB0",
-    "conf.default.baudrate", "115200",
+    "conf.default.port_name", "/dev/ttyUSB0",
+    "conf.default.baudrate", "230400",
     "conf.default.debug", "0",
-    "conf.default.encoding", "2",
-    "conf.default.geometry_x", "0",
-    "conf.default.geometry_y", "0",
-    "conf.default.geometry_z", "0",
     "conf.default.scale", "1.0",
+    "conf.default.offset", "5.0",
+    "conf.default.geometry_x", "0.0",
+    "conf.default.geometry_y", "0.0",
+    "conf.default.geometry_z", "0.0",
 
     // Widget
     "conf.__widget__.port_name", "text",
     "conf.__widget__.baudrate", "text",
-    "conf.__widget__.debug", "text",
-    "conf.__widget__.encoding", "spin",
+    "conf.__widget__.debug", "radio",
+    "conf.__widget__.scale", "slider.0.001",
+    "conf.__widget__.offset", "slider",
     "conf.__widget__.geometry_x", "text",
     "conf.__widget__.geometry_y", "text",
     "conf.__widget__.geometry_z", "text",
-    "conf.__widget__.scale", "text",
     // Constraints
-    "conf.__constraints__.encoding", "{twochar:2,threechar:3}",
+    "conf.__constraints__.debug", "(0, 1)",
+    "conf.__constraints__.scale", "0.001<x<1000.0",
+    "conf.__constraints__.offset", "-180.0<x<180.0",
 
     "conf.__type__.port_name", "string",
     "conf.__type__.baudrate", "int",
     "conf.__type__.debug", "int",
-    "conf.__type__.encoding", "int",
+    "conf.__type__.scale", "float",
+    "conf.__type__.offset", "double",
     "conf.__type__.geometry_x", "double",
     "conf.__type__.geometry_y", "double",
     "conf.__type__.geometry_z", "double",
-    "conf.__type__.scale", "float",
 
     ""
   };
@@ -100,14 +102,14 @@ RTC::ReturnCode_t RobotisLDSensorTest::onInitialize()
 
   // <rtc-template block="bind_config">
   // Bind variables and configuration variable
-  bindParameter("port_name", m_port_name, "ttyUSB0");
-  bindParameter("baudrate", m_baudrate, "115200");
+  bindParameter("port_name", m_port_name, "/dev/ttyUSB0");
+  bindParameter("baudrate", m_baudrate, "230400");
   bindParameter("debug", m_debug, "0");
-  bindParameter("encoding", m_encoding, "2");
-  bindParameter("geometry_x", m_geometry_x, "0");
-  bindParameter("geometry_y", m_geometry_y, "0");
-  bindParameter("geometry_z", m_geometry_z, "0");
   bindParameter("scale", m_scale, "1.0");
+  bindParameter("offset", m_offset, "5.0");
+  bindParameter("geometry_x", m_geometry_x, "0.0");
+  bindParameter("geometry_y", m_geometry_y, "0.0");
+  bindParameter("geometry_z", m_geometry_z, "0.0");
   // </rtc-template>
 
   return RTC::RTC_OK;

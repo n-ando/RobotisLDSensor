@@ -104,7 +104,7 @@ Lang Type:
 		Name:             port_name
 		Description:     
 		Type:            string
-		DefaultValue:     ttyUSB0
+		DefaultValue:     /dev/ttyUSB0
 		Unit:            
 		Range:           
 		Constraint:      
@@ -112,7 +112,7 @@ Lang Type:
 		Name:             baudrate
 		Description:     
 		Type:            int
-		DefaultValue:     115200
+		DefaultValue:     230400
 		Unit:            
 		Range:           
 		Constraint:      
@@ -125,10 +125,18 @@ Lang Type:
 		Range:           
 		Constraint:      
 
-		Name:             encoding
+		Name:             scale
 		Description:     
-		Type:            int
-		DefaultValue:     2
+		Type:            float
+		DefaultValue:     1.0
+		Unit:            
+		Range:           
+		Constraint:      
+
+		Name:             offset
+		Description:     
+		Type:            double
+		DefaultValue:     5.0
 		Unit:            
 		Range:           
 		Constraint:      
@@ -136,7 +144,7 @@ Lang Type:
 		Name:             geometry_x
 		Description:     
 		Type:            double
-		DefaultValue:     0
+		DefaultValue:     0.0
 		Unit:            
 		Range:           
 		Constraint:      
@@ -144,7 +152,7 @@ Lang Type:
 		Name:             geometry_y
 		Description:     
 		Type:            double
-		DefaultValue:     0
+		DefaultValue:     0.0
 		Unit:            
 		Range:           
 		Constraint:      
@@ -152,15 +160,7 @@ Lang Type:
 		Name:             geometry_z
 		Description:     
 		Type:            double
-		DefaultValue:     0
-		Unit:            
-		Range:           
-		Constraint:      
-
-		Name:             scale
-		Description:     
-		Type:            float
-		DefaultValue:     1.0
+		DefaultValue:     0.0
 		Unit:            
 		Range:           
 		Constraint:      

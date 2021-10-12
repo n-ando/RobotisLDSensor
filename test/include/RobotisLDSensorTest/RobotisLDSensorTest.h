@@ -230,13 +230,13 @@ class RobotisLDSensorTest
   /*!
    * 
    * - Name:  port_name
-   * - DefaultValue: ttyUSB0
+   * - DefaultValue: /dev/ttyUSB0
    */
   std::string m_port_name;
   /*!
    * 
    * - Name:  baudrate
-   * - DefaultValue: 115200
+   * - DefaultValue: 230400
    */
   int m_baudrate;
   /*!
@@ -247,34 +247,34 @@ class RobotisLDSensorTest
   int m_debug;
   /*!
    * 
-   * - Name:  encoding
-   * - DefaultValue: 2
+   * - Name:  scale
+   * - DefaultValue: 1.0
    */
-  int m_encoding;
+  float m_scale;
+  /*!
+   * 
+   * - Name:  offset
+   * - DefaultValue: 5.0
+   */
+  double m_offset;
   /*!
    * 
    * - Name:  geometry_x
-   * - DefaultValue: 0
+   * - DefaultValue: 0.0
    */
   double m_geometry_x;
   /*!
    * 
    * - Name:  geometry_y
-   * - DefaultValue: 0
+   * - DefaultValue: 0.0
    */
   double m_geometry_y;
   /*!
    * 
    * - Name:  geometry_z
-   * - DefaultValue: 0
+   * - DefaultValue: 0.0
    */
   double m_geometry_z;
-  /*!
-   * 
-   * - Name:  scale
-   * - DefaultValue: 1.0
-   */
-  float m_scale;
 
   // </rtc-template>
 
